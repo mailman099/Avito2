@@ -25,4 +25,5 @@ class HttpContentGetter(ContentGetter):
             resp = self._session.get(url, headers=headers, proxies=proxies, verify='resources/public.pem')  # type: requests.Response
         else:
             resp = self._session.get(url, headers=headers)  # type: requests.Response
+        resp.raise_for_status()
         return resp.text
