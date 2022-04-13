@@ -1,6 +1,9 @@
 import time
+from pathlib import Path
 
 import schedule
+from pygame import mixer
+
 from application import Application
 from content.http import HttpContentGetter
 from notification import Notificator
@@ -11,9 +14,16 @@ from parser.http import Bs4Parser
 
 class NotificatorAggregator(Notificator):
     def __init__(self, *notificators):
+        mixer.init()
+        self._resource_dir = Path('resources')
         self._notificators = notificators
 
     def notify(self, new_items):
+        for notify_sound in self._resource_dir.glob('notify.*'):
+            mixer.music.load(notify_sound)
+            mixer.music.play()
+            break
+
         for notificator in self._notificators:
             notificator.notify(new_items)
 
