@@ -10,9 +10,14 @@ pipenv sync
 
 # Запуск
 
-Из рабочей директории
+Из рабочей директории  
+Windows:
 ```shell
-pipenv run python main.py
+run
+```
+POSIX:
+```shell
+./run.sh
 ```
 
 # Ресурсы
