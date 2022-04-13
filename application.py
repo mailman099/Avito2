@@ -37,11 +37,10 @@ class Application:
                     except ValueError:
                         newest_from_idx = -1
                     if newest_from_idx != -1:
+                        diff = current_items[:newest_from_idx]
                         break
                 else:
-                    continue
-
-                diff = current_items[:newest_from_idx]
+                    diff = current_items
 
             if diff:
                 diffs += diff
