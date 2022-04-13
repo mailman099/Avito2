@@ -13,6 +13,7 @@ if __name__ == '__main__':
 
     app = Application(content_getter=content_getter, content_parser=parser, notificator=notificator)
 
+    app.main()
     schedule.every(5).minutes.do(app.main)
 
     while 1:
