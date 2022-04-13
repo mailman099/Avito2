@@ -36,10 +36,11 @@ if __name__ == '__main__':
     selenium_notificator = SeleniumNotificator()
     notificator = NotificatorAggregator(console_notificator, selenium_notificator)
 
-    app = Application(content_getter=content_getter, content_parser=parser, notificator=notificator)
+    first_run_app = Application(content_getter=content_getter, content_parser=parser, notificator=console_notificator)
+    first_run_app.main()
 
-    app.main()
-    schedule.every(5).minutes.do(app.main)
+    scheduled_app = Application(content_getter=content_getter, content_parser=parser, notificator=notificator)
+    schedule.every(5).minutes.do(scheduled_app.main)
 
     while 1:
         n = schedule.idle_seconds()
