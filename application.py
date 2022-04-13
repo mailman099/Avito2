@@ -47,7 +47,6 @@ class Application:
                 self._save_items(url, current_items)
 
         if diffs:
-            diffs = json.dumps(diffs, indent=2, ensure_ascii=False)
             self._notificator.notify(diffs)
 
     def _url_to_filename(self, url):  # type: (str) -> str

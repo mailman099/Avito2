@@ -35,9 +35,7 @@ class SeleniumNotificator(Notificator):
             if sys.platform == 'darwin':
                 os.chmod(self._driver_path, 755)
 
-    def notify(self, new_items):
-        new_items = json.loads(new_items)
-
+    def notify(self, new_items):  # type: (list[dict]) -> None
         browser = webdriver.Chrome(str(self._driver_path))
         for index, item in enumerate(new_items, start=1):
             try:
