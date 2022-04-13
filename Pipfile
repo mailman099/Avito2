@@ -12,6 +12,7 @@ lxml = "*"
 schedule = "*"
 pygame = "*"
 fake-useragent = "*"
+selenium = "==3.141.0"
 
 [requires]
 python_version = "3"

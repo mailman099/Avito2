@@ -1,4 +1,5 @@
 import socket
+
 import requests
 from fake_useragent import UserAgent
 
@@ -22,7 +23,8 @@ class HttpContentGetter(ContentGetter):
         headers = {'User-agent': self._ua.random}
         if self._is_proxy_available():
             proxies = {'http': 'http://localhost:8080', 'https': 'https://localhost:8080'}
-            resp = self._session.get(url, headers=headers, proxies=proxies, verify='resources/public.pem')  # type: requests.Response
+            resp = self._session.get(url, headers=headers, proxies=proxies,
+                                     verify='resources/public.pem')  # type: requests.Response
         else:
             resp = self._session.get(url, headers=headers)  # type: requests.Response
         resp.raise_for_status()
