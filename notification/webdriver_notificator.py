@@ -7,6 +7,7 @@ from pathlib import Path
 
 import requests
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchWindowException
 
 from notification import Notificator
 
@@ -39,4 +40,7 @@ class SeleniumNotificator(Notificator):
 
         browser = webdriver.Chrome(str(self._driver_path))
         for index, item in enumerate(new_items, start=1):
-            browser.execute_script(f"window.open('{item['url']}', 'tab{index}');")
+            try:
+                browser.execute_script(f"window.open('{item['url']}', 'tab{index}');")
+            except NoSuchWindowException:
+                break
