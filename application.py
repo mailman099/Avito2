@@ -70,6 +70,3 @@ class Application:
         else:
             previous = []
         return previous
-
-    def _to_hashable(self, d):  # type: (dict) -> tuple[tuple]
-        return tuple(sorted(d.items()))

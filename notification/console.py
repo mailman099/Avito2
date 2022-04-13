@@ -16,6 +16,4 @@ class ConsoleNotificator(Notificator):
             mixer.init()
             mixer.music.load(notify_sound)
             mixer.music.play()
-            while mixer.music.get_busy():  # wait for music to finish playing
-                time.sleep(1)
             break
